@@ -1,28 +1,29 @@
-name : iOS Build and Test
+name: iOS Build and Test
 
 on: 
-  pull_request :
-    branches : 
+  pull_request:
+    branches: 
       - main
-jobs :
+
+jobs:
   build-and-test:
     runs-on: macos-latest
 
     steps: 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Build and Test
-        uses: sersoft-gmbh/xcodebuild-actionv@v3.2.0
+        uses: sersoft-gmbh/xcodebuild-action@v3.2.0
         with:
           project: EPCollaboratif.xcodeproj
           scheme: EPCollaboratif
-          destination: 'paltform= iOS Simulator, name=iPhone 16'
+          destination: 'platform=iOS Simulator, name=iPhone 16'
           action: test
           result-bundle-path: 'testResults/TestResults.xcresult'
       
       - name: Process Test Results
+        if: success() || failure()
         uses: kishikawakatsumi/xcresulttool@v1
-          with:
-            path: TestResults/TestResults.xcresult
-          if: success() || failure()
+        with:
+          path: 'testResults/TestResults.xcresult'
