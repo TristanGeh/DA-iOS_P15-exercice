@@ -13,15 +13,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Create test results directory
+        run: mkdir -p testResults
+
+      - name: Set up Simulator
+        run: xcrun simctl boot "iPhone 14" || true
+
       - name: Build and Test
-        uses: sersoft-gmbh/xcodebuild-action@v3
+        uses: sersoft-gmbh/xcodebuild-action@v3.2.0
         with:
           project: EPCollaboratif.xcodeproj
           scheme: EPCollaboratif
-          destination: 'platform=iOS Simulator, name=iPhone 14'
+          destination: 'platform=iOS Simulator,name=iPhone 14'
           action: test
           result-bundle-path: 'testResults/TestResults.xcresult'
-      
+
+      - name: Check if Test Results Exist
+        run: |
+          if [ -d "testResults/TestResults.xcresult" ]; then
+            echo "Test results found."
+          else
+            echo "Test results not found."
+            exit 1
+          fi
       - name: Process Test Results
         uses: kishikawakatsumi/xcresulttool@v1
         with:
