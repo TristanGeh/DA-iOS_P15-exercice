@@ -12,29 +12,20 @@ jobs:
     steps:
     - uses: actions/checkout@v2  # Utilisez v2 pour plus de stabilité
 
-    - name: Verify Xcode 15.4 is installed
+    - name: Install fastlane
       run: |
-        if [ -d "/Applications/Xcode_15.4.app" ]; then
-          echo "Xcode 14.2 found!"
-        else
-          echo "Xcode 15.4 not found, aborting."
-          exit 1
-        fi
+        gem install fastlane
 
-    - name: Select Xcode version
-      run: sudo xcode-select -switch /Applications/Xcode_15.4.app
-
-    - name: Xcode version
-      run: /usr/bin/xcodebuild -version
-
-    - name: Build and Test
+    - name: Install dependencies
       run: |
+        bundle install
+
+    - name: Run fastlane to manage signing and build
+      run: |
+        fastlane match development  # Cela va gérer automatiquement les certificats et profils
         xcodebuild clean build test \
           -project EPCollaboratif.xcodeproj \
           -scheme "EPCollaboratif" \
-          CODE_SIGN_IDENTITY="" \
-          CODE_SIGNING_REQUIRED=NO \
-          CODE_SIGNING_ALLOWED=NO \
           -sdk iphonesimulator \
           -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=16.2" \
           ONLY_ACTIVE_ARCH=YES
