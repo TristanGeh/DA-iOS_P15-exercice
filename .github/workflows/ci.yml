@@ -32,8 +32,8 @@ jobs:
         xcodebuild clean build test \
           -project EPCollaboratif.xcodeproj \
           -scheme "EPCollaboratif" \
-          CODE_SIGN_IDENTITY="" \
-          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="iPhone Developer" \
+          CODE_SIGNING_REQUIRED=YES \
           -sdk iphonesimulator \
           -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=16.2" \
           ONLY_ACTIVE_ARCH=YES
