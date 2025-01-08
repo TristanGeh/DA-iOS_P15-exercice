@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2  # Utilisez v2 pour plus de stabilité
 
-    - name: Verify Xcode 14.2 is installed
+    - name: Verify Xcode 15.4 is installed
       run: |
         if [ -d "/Applications/Xcode_14.2.app" ]; then
           echo "Xcode 14.2 found!"
