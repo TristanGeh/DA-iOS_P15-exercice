@@ -1,4 +1,4 @@
-name: Ci_
+name: Ci
 
 on:
   pull_request:
@@ -13,15 +13,10 @@ jobs:
     # Étape pour vérifier le code source
     - uses: actions/checkout@v2
 
+    # Étape pour installer fastlane
     - name: Install fastlane
-      run: |
-        gem install fastlane
+      run: gem install fastlane
 
-    - name: Install dependencies
-      run: |
-        bundle install
-
-    - name: Run fastlane to manage signing and build
     # Étape pour installer Bundler
     - name: Install Bundler
       run: gem install bundler
