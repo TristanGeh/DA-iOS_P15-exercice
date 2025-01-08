@@ -1,5 +1,7 @@
 name: CI
 
+name: iOS Build and Test
+
 on:
   pull_request:
     branches:

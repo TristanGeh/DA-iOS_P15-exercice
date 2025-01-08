@@ -26,6 +26,7 @@
 		2F592EA32BF4A63800908B81 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F592E922BF4A63800908B81 /* MockData.swift */; };
 		2F592EA42BF4A63800908B81 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F592E942BF4A63800908B81 /* Project.swift */; };
 		2F592EA52BF4A63800908B81 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F592E952BF4A63800908B81 /* Task.swift */; };
+		A5DB049F76EC9ECEC5B4206E /* Pods_EPCollaboratif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F14379068D67CE361154FDF /* Pods_EPCollaboratif.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,9 @@
 		2F9C30882BF4A86F006A2A5F /* EPCollaboratif.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EPCollaboratif.xctestplan; sourceTree = "<group>"; };
 		2FFEDA862BDF96C200319E4A /* EPCollaboratif.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EPCollaboratif.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFEDA962BDF96C300319E4A /* EPCollaboratifTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EPCollaboratifTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F14379068D67CE361154FDF /* Pods_EPCollaboratif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EPCollaboratif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D49638708638D851781F4229 /* Pods-EPCollaboratif.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EPCollaboratif.release.xcconfig"; path = "Target Support Files/Pods-EPCollaboratif/Pods-EPCollaboratif.release.xcconfig"; sourceTree = "<group>"; };
+		F2FD0DA4333AF4F9B174E975 /* Pods-EPCollaboratif.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EPCollaboratif.debug.xcconfig"; path = "Target Support Files/Pods-EPCollaboratif/Pods-EPCollaboratif.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DB049F76EC9ECEC5B4206E /* Pods_EPCollaboratif.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +163,8 @@
 				2F592E7F2BF4A63800908B81 /* EPCollaboratif */,
 				2FFEDA992BDF96C300319E4A /* EPCollaboratifTests */,
 				2FFEDA872BDF96C200319E4A /* Products */,
+				F3E408B068B393C171AAC33A /* Pods */,
+				5050D7478997B0F9C30568F2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,6 +188,24 @@
 			path = EPCollaboratifTests;
 			sourceTree = "<group>";
 		};
+		5050D7478997B0F9C30568F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F14379068D67CE361154FDF /* Pods_EPCollaboratif.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F3E408B068B393C171AAC33A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2FD0DA4333AF4F9B174E975 /* Pods-EPCollaboratif.debug.xcconfig */,
+				D49638708638D851781F4229 /* Pods-EPCollaboratif.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FFEDAAA2BDF96C300319E4A /* Build configuration list for PBXNativeTarget "EPCollaboratif" */;
 			buildPhases = (
+				FA82DC07A6DC3C591AE40712 /* [CP] Check Pods Manifest.lock */,
 				2FFEDA822BDF96C200319E4A /* Sources */,
 				2FFEDA832BDF96C200319E4A /* Frameworks */,
 				2FFEDA842BDF96C200319E4A /* Resources */,
+				6ED6E92AB6032A1370EFE79F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -275,6 +302,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6ED6E92AB6032A1370EFE79F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EPCollaboratif/Pods-EPCollaboratif-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EPCollaboratif/Pods-EPCollaboratif-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EPCollaboratif/Pods-EPCollaboratif-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA82DC07A6DC3C591AE40712 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EPCollaboratif-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2FFEDA822BDF96C200319E4A /* Sources */ = {
@@ -442,6 +511,7 @@
 		};
 		2FFEDAAB2BDF96C300319E4A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2FD0DA4333AF4F9B174E975 /* Pods-EPCollaboratif.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -473,6 +543,7 @@
 		};
 		2FFEDAAC2BDF96C300319E4A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D49638708638D851781F4229 /* Pods-EPCollaboratif.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
