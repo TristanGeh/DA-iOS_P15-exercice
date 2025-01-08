@@ -1,26 +1,34 @@
 name: CI
+
 on:
-    pull_request:
+  pull_request:
     branches: [ main ]
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
-    # This workflow contains a single job called "build-and-test"
-    build-and-test:
-    # The type of runner that the job will run on
+  build-and-test:
     runs-on: macos-14-xlarge
-    
     timeout-minutes: 8
-    
-    # Steps represent a sequence of tasks that will be executed as part of the job
+
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v4
-    
-    - name: Select Xcode
+      # Étape 1: Vérification du code source
+      - uses: actions/checkout@v4
+
+      # Étape 2: Sélectionner la version Xcode
+      - name: Select Xcode
         run: sudo xcode-select -switch /Applications/Xcode_15.4.app
-    
-    - name: Xcode version
+
+      # Étape 3: Vérification de la version Xcode
+      - name: Xcode version
         run: /usr/bin/xcodebuild -version
-    
-    - name: Build and Test
-        run: xcodebuild clean build test -project EPCollaboratif.xcodeproj -scheme "EPCollaboratif" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=16.2" ONLY_ACTIVE_ARCH=YES
+
+      # Étape 4: Construire et tester l'application
+      - name: Build and Test
+        run: |
+          xcodebuild clean build test \
+            -project EPCollaboratif.xcodeproj \
+            -scheme "EPCollaboratif" \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=16.2" \
+            ONLY_ACTIVE_ARCH=YES
