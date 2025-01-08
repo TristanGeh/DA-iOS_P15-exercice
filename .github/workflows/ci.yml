@@ -13,7 +13,6 @@ jobs:
     # Étape pour vérifier le code source
     - uses: actions/checkout@v2
 
-<<<<<<< HEAD
     - name: Install fastlane
       run: |
         gem install fastlane
@@ -23,7 +22,6 @@ jobs:
         bundle install
 
     - name: Run fastlane to manage signing and build
-=======
     # Étape pour installer Bundler
     - name: Install Bundler
       run: gem install bundler
@@ -42,7 +40,6 @@ jobs:
 
     # Étape pour construire et tester l'application
     - name: Build and Test
->>>>>>> main
       run: |
         fastlane match development  # Cela va gérer automatiquement les certificats et profils
         xcodebuild clean build test \
