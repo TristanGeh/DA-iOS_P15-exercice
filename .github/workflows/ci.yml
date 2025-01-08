@@ -12,7 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2  # Utilisez v2 pour plus de stabilité
 
-<<<<<<< HEAD
     - name: Verify Xcode 15.4 is installed
       run: |
         if [ -d "/Applications/Xcode_15.4.app" ]; then
@@ -22,8 +21,6 @@ jobs:
           exit 1
         fi
 
-=======
->>>>>>> screencast
     - name: Select Xcode version
       run: sudo xcode-select -switch /Applications/Xcode_15.4.app
 
