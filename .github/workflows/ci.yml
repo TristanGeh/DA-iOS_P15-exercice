@@ -1,4 +1,4 @@
-name: Ci_1
+name: Ci_
 
 on:
   pull_request:
@@ -11,6 +11,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2  # Utilisez v2 pour plus de stabilité
+
+    - name: Verify Xcode 15.4 is installed
+      run: |
+        if [ -d "/Applications/Xcode_15.4.app" ]; then
+          echo "Xcode 14.2 found!"
+        else
+          echo "Xcode 15.4 not found, aborting."
+          exit 1
+        fi
 
     - name: Select Xcode version
       run: sudo xcode-select -switch /Applications/Xcode_15.4.app
