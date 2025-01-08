@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 name: Ci_
 
-=======
 name: iOS Build and Test
->>>>>>> screencast
 on:
     pull_request:
     branches: [ main ]
@@ -18,7 +15,6 @@ jobs:
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-<<<<<<< HEAD
     # Étape pour vérifier le code source
     - uses: actions/checkout@v2
 
@@ -39,19 +35,16 @@ jobs:
       run: sudo xcode-select -switch /Applications/Xcode_15.4.app
 
     # Étape pour vérifier la version d'Xcode
-=======
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v4
     
     - name: Select Xcode
         run: sudo xcode-select -switch /Applications/Xcode_15.4.app
     
->>>>>>> screencast
     - name: Xcode version
         run: /usr/bin/xcodebuild -version
     
     - name: Build and Test
-<<<<<<< HEAD
       run: |
         fastlane match development  # Cela va gérer automatiquement les certificats et profils
         xcodebuild clean build test \
@@ -60,6 +53,4 @@ jobs:
           -sdk iphonesimulator \
           -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=16.2" \
           ONLY_ACTIVE_ARCH=YES
-=======
         run: xcodebuild clean build test -project EPCollaboratif.xcodeproj -scheme "EPCollaboratif" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=16.2" ONLY_ACTIVE_ARCH=YES
->>>>>>> screencast
