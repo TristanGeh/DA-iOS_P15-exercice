@@ -13,15 +13,34 @@ jobs:
       # Étape 1: Vérification du code source
       - uses: actions/checkout@v4
 
-      # Étape 2: Sélectionner la version Xcode
+      # Étape 2: Installer CocoaPods
+      - name: Install CocoaPods
+        run: |
+          sudo gem install cocoapods
+
+      # Étape 3: Cache Pods
+      - name: Cache Pods
+        uses: actions/cache@v3
+        with:
+          path: Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      # Étape 4: Installer les dépendances CocoaPods (si non en cache)
+      - name: Install Pods
+        run: |
+          pod install
+
+      # Étape 5: Sélectionner la version Xcode
       - name: Select Xcode
         run: sudo xcode-select -switch /Applications/Xcode_15.4.app
 
-      # Étape 3: Vérification de la version Xcode
+      # Étape 6: Vérification de la version Xcode
       - name: Xcode version
         run: /usr/bin/xcodebuild -version
 
-      # Étape 4: Construire et tester l'application
+      # Étape 7: Construire et tester l'application
       - name: Build and Test
         run: |
           xcodebuild clean build test \
