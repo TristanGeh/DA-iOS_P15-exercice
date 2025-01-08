@@ -1,4 +1,4 @@
-name: Ci
+name: Ci_
 
 on:
   pull_request:
@@ -12,6 +12,10 @@ jobs:
     steps:
     # Étape pour vérifier le code source
     - uses: actions/checkout@v2
+
+    # Étape pour installer fastlane
+    - name: Install fastlane
+      run: gem install fastlane
 
     # Étape pour installer Bundler
     - name: Install Bundler
@@ -32,12 +36,10 @@ jobs:
     # Étape pour construire et tester l'application
     - name: Build and Test
       run: |
+        fastlane match development  # Cela va gérer automatiquement les certificats et profils
         xcodebuild clean build test \
           -project EPCollaboratif.xcodeproj \
           -scheme "EPCollaboratif" \
-          CODE_SIGN_IDENTITY="" \
-          CODE_SIGNING_REQUIRED=NO \
-          CODE_SIGNING_ALLOWED=NO \
           -sdk iphonesimulator \
           -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=16.2" \
           ONLY_ACTIVE_ARCH=YES
