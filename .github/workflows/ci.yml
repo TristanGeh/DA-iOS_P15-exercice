@@ -1,26 +1,45 @@
-name: Ci
+name: Cooooo
+
 on:
-    pull_request:
-    branches: [ main ]
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  pull_request:
+    branches:
+      - main
+
 jobs:
-    # This workflow contains a single job called "build-and-test"
-    build-and-test:
-    # The type of runner that the job will run on
+  build-and-test:
     runs-on: macos-14-xlarge
-    
+
     timeout-minutes: 8
-    
-    # Steps represent a sequence of tasks that will be executed as part of the job
+
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v4
-    
-    - name: Select Xcode
-        run: sudo xcode-select -switch /Applications/Xcode_15.4.app
-    
+    # Checkout your repository
+    - uses: actions/checkout@v2
+
+    # Check if the Xcode version exists
+    - name: Verify Xcode 15.4 is installed
+      run: |
+        if [ -d "/Applications/Xcode_15.4.app" ]; then
+          echo "Xcode 15.4 found!"
+        else
+          echo "Xcode 15.4 not found, aborting."
+          exit 1
+        fi
+
+    # Select the correct Xcode version
+    - name: Select Xcode version
+      run: sudo xcode-select -switch /Applications/Xcode_15.4.app
+
+    # Verify the Xcode version
     - name: Xcode version
-        run: /usr/bin/xcodebuild -version
-    
+      run: /usr/bin/xcodebuild -version
+
+    # Build and Test
     - name: Build and Test
-        run: xcodebuild clean build test -project EPCollaboratif.xcodeproj -scheme "EPCollaboratif" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=16.2" ONLY_ACTIVE_ARCH=YES
+      run: xcodebuild clean build test \
+        -project EPCollaboratif.xcodeproj \
+        -scheme "EPCollaboratif" \
+        CODE_SIGN_IDENTITY="" \
+        CODE_SIGNING_REQUIRED=NO \
+        -sdk iphonesimulator \
+        -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=16.2" \
+        ONLY_ACTIVE_ARCH=YES
